@@ -3,7 +3,8 @@ import './App.css';
 import axios from 'axios';
 import ShoppingList from '../ShoppingList/ShoppingList'
 
-
+import Header from '../Header/Header'
+import AddList from '../AddItem/AddItem'
 class App extends Component {
   state = {
     groceryList: [],
@@ -39,10 +40,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="banner-header">
-          <h1>My Shopping List</h1>
-        </header>
+        <Header/>
         <main>
+          <AddList/>
+          <p>Under Construction...</p>
           <ShoppingList />
         </main>
       </div>
