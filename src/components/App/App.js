@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import ShoppingList from '../ShoppingList/ShoppingList'
 
 
 class App extends Component {
@@ -42,12 +43,11 @@ class App extends Component {
           <h1>My Shopping List</h1>
         </header>
         <main>
-          <p>Under Construction...</p>
+          <ShoppingList />
         </main>
       </div>
     );
   }
-  
 }
 
 export default App;
