@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
+
 
 class App extends Component {
   state = {
@@ -32,8 +34,7 @@ class App extends Component {
     })
   }
 
-  }
-
+  
   render() {
     return (
       <div className="App">
@@ -46,6 +47,7 @@ class App extends Component {
       </div>
     );
   }
-
+  
+}
 
 export default App;
