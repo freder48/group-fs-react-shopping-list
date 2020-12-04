@@ -43,7 +43,7 @@ class App extends Component {
           <h1>My Shopping List</h1>
         </header>
         <main>
-          <ShoppingList />
+          <ShoppingList groceryList={this.state.groceryList}/>
         </main>
       </div>
     );
