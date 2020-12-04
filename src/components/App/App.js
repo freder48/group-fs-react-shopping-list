@@ -70,8 +70,7 @@ addItem = () => {
         <main>
           <AddList addItem={this.addItem}/>
           <p>Under Construction...</p>
-          <ShoppingList />
-          { JSON.stringify(this.state.groceryList)}
+          <ShoppingList getAllGroceries={this.getAllGroceries} groceryList={this.state.groceryList}/>
         </main>
       </div>
     );
