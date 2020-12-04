@@ -50,6 +50,18 @@ router.delete('/:id', (req, res) => {
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500); // Good server always responds
         })
+router.delete('/clear', (req, res) => {
+    console.log('Clearing all');
+    let sqlText = 'DELETE FROM shopping_list;';
+    pool.query(sqlText, [reqId])
+        .then((result) => {
+            console.log('Items deleted');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); // Good server always responds
+        })
 })//end delete 
 
 module.exports = router;
