@@ -16,6 +16,32 @@ class App extends Component {
     
   }
 
+addItem = () => {
+  let newItem = {
+    food_name: '',
+    quantity: 0, 
+    unit: 0
+  }
+  console.log(newItem);
+   axios({
+    method: 'POST',
+    url: '/list',
+    data: newItem
+  })
+  .then((response) => {
+    //the info we want is in the response
+    console.log('response', response);
+    this.getAllGroceries();
+    
+  })
+  .catch((error) => {
+    alert('Something bad happening');
+    console.log('error', error);  
+  })
+    
+  }
+
+
   //start AllGroceries
   getAllGroceries = () => {
     axios({
@@ -42,9 +68,10 @@ class App extends Component {
       <div className="App">
         <Header/>
         <main>
-          <AddList/>
+          <AddList addItem={this.addItem}/>
           <p>Under Construction...</p>
           <ShoppingList />
+          { JSON.stringify(this.state.groceryList)}
         </main>
       </div>
     );
