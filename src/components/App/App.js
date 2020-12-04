@@ -16,12 +16,8 @@ class App extends Component {
     
   }
 
-addItem = () => {
-  let newItem = {
-    food_name: '',
-    quantity: 0, 
-    unit: 0
-  }
+addItem = (newItem) => {
+  
   console.log(newItem);
    axios({
     method: 'POST',
