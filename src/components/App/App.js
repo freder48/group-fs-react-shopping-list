@@ -58,6 +58,22 @@ addItem = (newItem) => {
     })
   }
 
+  deleteAll = (event) => {
+    console.log('in deleteAll');
+    
+    axios.delete(`/list/clear/`)
+    .then((response) => {
+      //the info we want is in the response
+      console.log('response', response.data);
+      this.getAllGroceries();
+      
+    })
+    .catch((error) => {
+      alert('Something bad happening in the deleteAll');
+      console.log('error', error);  
+    })
+  }
+
   
   render() {
     return (
@@ -66,7 +82,7 @@ addItem = (newItem) => {
         <main>
           <AddList addItem={this.addItem}/>
           <p>Under Construction...</p>
-          <ShoppingList getAllGroceries={this.getAllGroceries} groceryList={this.state.groceryList}/>
+          <ShoppingList getAllGroceries={this.getAllGroceries} groceryList={this.state.groceryList} deleteAll={this.deleteAll}/>
         </main>
       </div>
     );

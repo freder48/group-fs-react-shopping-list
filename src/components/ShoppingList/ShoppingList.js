@@ -5,6 +5,7 @@ import './ShoppingList.css';
 
 class ShoppingList extends Component { 
   
+             
   updateItem = (id) => { 
     console.log('updating item', id); 
     axios
@@ -28,7 +29,8 @@ class ShoppingList extends Component {
   render() {
     return (
       <div className="shoppingList"> 
-              <p>{JSON.stringify(this.props)}</p>            
+              <button onClick={this.props.deleteAll}>Clear</button> 
+              <p></p>    
             {
               this.props.groceryList.map((item, pos) => 
               <div className="divFood" key={pos}> 
