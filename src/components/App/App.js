@@ -44,7 +44,7 @@ class App extends Component {
         <main>
           <AddList/>
           <p>Under Construction...</p>
-          <ShoppingList />
+          <ShoppingList getAllGroceries={this.getAllGroceries} groceryList={this.state.groceryList}/>
         </main>
       </div>
     );
