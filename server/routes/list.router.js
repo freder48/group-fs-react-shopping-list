@@ -40,20 +40,9 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     let reqId = req.params.id;
     console.log('Delete request for id', reqId);
-    let sqlText = 'DELETE FROM shopping_list WHERE id=$1;';
-    pool.query(sqlText, [reqId])
-        .then((result) => {
-            console.log('Food Item deleted');
-            res.sendStatus(200);
-        })
-        .catch((error) => {
-            console.log(`Error making database query ${sqlText}`, error);
-            res.sendStatus(500); // Good server always responds
-        })
-router.delete('/clear', (req, res) => {
-    console.log('Clearing all');
-    let sqlText = 'DELETE FROM shopping_list;';
-    pool.query(sqlText, [reqId])
+    if(reqId === 'clear'){ 
+        let sqlText = 'DELETE FROM shopping_list;'; 
+        pool.query(sqlText)
         .then((result) => {
             console.log('Items deleted');
             res.sendStatus(200);
@@ -62,6 +51,20 @@ router.delete('/clear', (req, res) => {
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500); // Good server always responds
         })
-})//end delete 
+       
+    } else {
+        let sqlText = 'DELETE FROM shopping_list WHERE id=$1;';
+        pool.query(sqlText, [reqId])
+        .then((result) => {
+            console.log('Food Item deleted');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+    }
+    
+})//end delete  
 
 module.exports = router;
