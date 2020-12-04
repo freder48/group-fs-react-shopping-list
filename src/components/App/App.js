@@ -61,7 +61,7 @@ addItem = (newItem) => {
   deleteAll = (event) => {
     console.log('in deleteAll');
     
-    axios.delete(`/list/clear/`)
+    axios.delete(`/list/clear`)
     .then((response) => {
       //the info we want is in the response
       console.log('response', response.data);
