@@ -22,11 +22,11 @@ router.get('/', (req, res) => {
 
 // POST list
 router.post('/', (req, res) => {
-    const newItem = req.body.food_name
+    const newItem = req.body
     const sqlText = `INSERT INTO shopping_list (food_name, quantity, unit)
                     VALUES ($1, $2, $3);`;
 
-    pool.query(sqlText, [newItem])
+    pool.query(sqlText, [newItem.food_name, newItem.quantity, newItem.unit])
         .then((result) => {
             res.sendStatus(201);
         })

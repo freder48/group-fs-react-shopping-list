@@ -3,26 +3,52 @@ import React, { Component } from 'react';
 
 // class
 class AddItem extends Component{
+    state = {
+        itemList: [],
+        newItem: {
+            item: '',
+            quantity: 0,
+            unit: 0
+        }
+    }
+
+    handleChange = (inputValue) => (event) =>{
+        this.setState({
+            newItem: {
+                ...this.state.newItem,
+                [inputValue]: event.target.value,
+
+            }
+        })
+    }
+
+    handleSubmit = (event) => {
+        this.setState({
+            itemList: [...this.state.itemList, this.state.newItem]
+            
+        })
+    }
+    
     render(){
         return(
         <>
             
                 <h2>Add an Item</h2>
                 <label>Item:</label>
-                <input type="text"/>
+                <input  onChange={this.handleChange('item')} type="text"/>
 
                 <label>Quantity:</label>
-                <input type="number"/>
+                <input onChange={this.handleChange('quantity')} type="number"/>
 
                 <label>Unit:</label>
-                <input type="text"/>
+                <input onChange={this.handleChange('unit')} type="text"/>
 
-                <button>Save</button>
+                <button onClick={this.props.addItem}>Save</button>
+                { JSON.stringify(this.state.newItem)}
             
         </> 
-        ) // end return
-    } // end render
-} // end class
+        )
+        }
+    }
 
-// export 
-export default AddItem;
+    export default AddItem;
