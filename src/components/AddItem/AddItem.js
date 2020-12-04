@@ -6,7 +6,7 @@ class AddItem extends Component{
     state = {
         itemList: [],
         newItem: {
-            item: '',
+            food_name: '',
             quantity: 0,
             unit: 0
         }
@@ -35,7 +35,7 @@ class AddItem extends Component{
             
                 <h2>Add an Item</h2>
                 <label>Item:</label>
-                <input  onChange={this.handleChange('item')} type="text"/>
+                <input  onChange={this.handleChange('food_name')} type="text"/>
 
                 <label>Quantity:</label>
                 <input onChange={this.handleChange('quantity')} type="number"/>
@@ -43,7 +43,7 @@ class AddItem extends Component{
                 <label>Unit:</label>
                 <input onChange={this.handleChange('unit')} type="text"/>
 
-                <button onClick={this.props.addItem}>Save</button>
+                <button onClick={()=> this.props.addItem(this.state.newItem)}>Save</button>
                 { JSON.stringify(this.state.newItem)}
             
         </> 
